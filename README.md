@@ -60,8 +60,15 @@ java --version
 ### 1. Initial Configuration
 
 1. Launch Android Studio
-2. Complete the setup wizard
+2. Select Install type
+	- Standard (Recommended) - [Standard Setup](#standard-setup-)
+	- Custom - [Install SDK Components](#2-install-sdk-components-)
 3. Go to Settings/Preferences → Appearance & Behavior → System Settings → Android SDK
+
+##  Standard Setup 📱
+![Setup1](./assets/images/setup-1.png)
+![Setup2](./assets/images/setup-2.png)
+![Setup3](./assets/images/setup-3.png)
 
 ### 2. Install SDK Components 📱
 
@@ -108,21 +115,37 @@ code .
 
 ## ▶️ Running Your App
 
-### 1. Start Development Server
+### 1. Set environment variables
+
+#### Set ANDROID_HOME 🏠
+
+```powershell
+[System.Environment]::SetEnvironmentVariable('ANDROID_HOME', '$env:LOCALAPPDATA\Android\Sdk', 'User')
+```
+
+#### Add platform-tools to Path 🛠
+
+```powershell
+[System.Environment]::SetEnvironmentVariable('Path', $env:Path + ';$env:LOCALAPPDATA\Android\Sdk\platform-tools', 'User')
+```
+> [!NOTE]  
+> Check and verify **$env:LOCALAPPDATA** is updated with your local path. If not, find the acutal path of sdk and platform-tools and update accordingly
+
+### 2. Start Development Server
 
 ```powershell
 # Start Expo development server
 npx expo start
 ```
 
-### 2. Running on Android Emulator 📱
+### 3. Running on Android Emulator 📱
 
 ```powershell
 # Start Android emulator first
 npx expo start --android
 ```
 
-### 3. Running on Physical Device 📱
+### 4. Running on Physical Device 📱
 
 1. Install "Expo Go" app from Play Store/App Store
 2. Scan QR code with:
